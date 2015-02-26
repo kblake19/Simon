@@ -1,5 +1,12 @@
 /*
- * 
+ * @author Kellen Lake
+ * @id kblake
+ * @course CSIS 252 - Programming II
+ * @project Simon Lab
+ * @related myQueue.java
+ *	This class is the queue class that will handle
+ *	all of the commands that are needed from the
+ *	possible actions of the Simon game
  */
 public class myQueue {
     protected final int DEFCAP = 100;
@@ -19,27 +26,17 @@ public class myQueue {
     }
     
     public void enqueue(Object element) {
-        if(isFull())
-    	    throw new QueueOverflowException("Enqueue attempted" +
-    	        + " on a full queue")
-        else {
-            rear = (rear + 1) % queue.length;
-            queue[rear] = element;
-            numElements = numElements + 1;
-        }
+        rear = (rear + 1) % queue.length;
+        queue[rear] = element;
+        numElements = numElements + 1;
     }
     
     public Object dequeue() {
-        if(isEmpty())
-            throw new QueueOverflowException("Dequeue attempted on" +
-                + " empty queue")
-        else {
-            Object toReturn = queue[front];
-            queue[front] = null;
-            front = (front + 1) % queue.length
-            numElements = numElements - 1;
-            return toReturn;
-        }
+        Object toReturn = queue[front];
+        queue[front] = null;
+        front = (front + 1) % queue.length;
+        numElements = numElements - 1;
+        return toReturn;
     }
     
     public boolean isFull() {
